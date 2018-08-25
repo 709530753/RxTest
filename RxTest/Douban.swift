@@ -12,7 +12,6 @@ class Douban: Mappable {
     
     var channels: [Channel]?
     
-    
     required init?(map: Map) {
         
     }
@@ -30,7 +29,8 @@ class Channel: Mappable {
     var channelId: String?
     var seqId: Int?
     var abbrEn: String?
-    
+    var aaa: String?
+
     required init?(map: Map) {
         
     }
@@ -41,7 +41,8 @@ class Channel: Mappable {
         channelId <- map["channel_id"]
         seqId <- map["seq_id"]
         abbrEn <- map["abbr_en"]
-        
+        aaa <- map["aaa"]
+
     }
     
     

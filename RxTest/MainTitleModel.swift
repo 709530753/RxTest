@@ -18,6 +18,7 @@ enum RXSwift_Test_Type {
     case mvvm
     case notification
     case rxalamofire
+    case login
 }
 
 struct MainTitleModel {
@@ -31,7 +32,9 @@ struct MainTitleModel {
             Title.init(title: "RxDataSources", subTitle: "", testType: .tableView_RxDataSources, pushVC: "RxDataSourcesController"),
             Title.init(title: "MVVM", subTitle: "", testType: .mvvm, pushVC: "RxMvvmController"),
             Title.init(title: "NotificationCenter", subTitle: "", testType: .notification, pushVC: "NotificationController"),
-            Title.init(title: "RxAlamofire", subTitle: "", testType: .rxalamofire, pushVC: "RxAlamofireController")
+            Title.init(title: "RxAlamofire", subTitle: "", testType: .rxalamofire, pushVC: "RxAlamofireController"),
+            Title.init(title: "Login", subTitle: "", testType: .login, pushVC: "LoginController")
+
         ])
 
 }
