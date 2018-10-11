@@ -16,7 +16,8 @@ target 'RxTest' do
     pod 'ObjectMapper', '~> 3.3'
     pod 'Moya-ObjectMapper'
     pod 'RxAlamofire'
-
+    pod 'MBProgressHUD', '~>1.0.0'
+    
   target 'RxTestTests' do
     inherit! :search_paths
     # Pods for testing

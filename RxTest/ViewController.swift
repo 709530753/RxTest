@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import MBProgressHUD
 
 class ViewController: UIViewController {
 
@@ -21,6 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+//         MBProgressHUD.show(message: "", view: self.view)
         //绑定数据
         mainTitleModel.titleModel.bind(to: mainTable.rx.items(cellIdentifier: "cell")) { _, titleModel, cell in
             cell.textLabel?.text = titleModel.title
@@ -32,9 +34,13 @@ class ViewController: UIViewController {
             VC.title = titleModel.title
             self.navigationController?.pushViewController(VC, animated: true)
         }).disposed(by: disPosBag)
-        
+     
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        MBProgressHUD.hideHUDForView(view: self.view)
 
-
+    }
+    
 }
 
