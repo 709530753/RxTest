@@ -92,8 +92,18 @@ extension BaseWKWebController: WKNavigationDelegate, WKUIDelegate, WKScriptMessa
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         
+        print("body:\(message.body)")
         print("name : \(message.name)")
-        
+
+        let bodyDic = message.body as? [String:Any]
+        let params = bodyDic!["params"] as? [String:Any]
+        if let url = params!["url"] as? String,
+           let title = params!["title"] as? String {
+           let vc = BaseWKWebController()
+            vc.urlString = url
+            vc.title = title
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func webViewDidClose(_ webView: WKWebView) {

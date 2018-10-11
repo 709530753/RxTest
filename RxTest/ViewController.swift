@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        //注释
 //         MBProgressHUD.show(message: "", view: self.view)
         //绑定数据
         mainTitleModel.titleModel.bind(to: mainTable.rx.items(cellIdentifier: "cell")) { _, titleModel, cell in
