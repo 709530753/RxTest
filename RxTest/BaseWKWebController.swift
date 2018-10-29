@@ -32,7 +32,7 @@ class BaseWKWebController: UIViewController {
         
         webView.navigationDelegate = self
         webView.uiDelegate = self
-        urlString = "http://localhost:63342/Demo/Text.html?_ijt=jo1ctphh77amjihipo29evpp0f"
+        urlString = "http://localhost:63342/Demo/Text.html"
     
     }
     
@@ -50,7 +50,7 @@ class BaseWKWebController: UIViewController {
     
     //MARK: - KVO
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "estimatedProgress" {
+        if keyPath == webEstimatedProgress {
             progress.alpha = 1.0
             progress.setProgress(Float(webView.estimatedProgress), animated: true)
             //进度条的值最大为1.0
@@ -96,13 +96,22 @@ extension BaseWKWebController: WKNavigationDelegate, WKUIDelegate, WKScriptMessa
         print("name : \(message.name)")
 
         let bodyDic = message.body as? [String:Any]
-        let params = bodyDic!["params"] as? [String:Any]
-        if let url = params!["url"] as? String,
-           let title = params!["title"] as? String {
-           let vc = BaseWKWebController()
-            vc.urlString = url
-            vc.title = title
-            self.navigationController?.pushViewController(vc, animated: true)
+        let action = bodyDic!["action"] as? String
+        
+        if action == "openNewWindow" {
+            let params = bodyDic!["params"] as? [String:Any]
+            if let url = params!["url"] as? String,
+                let title = params!["title"] as? String {
+                let vc = BaseWKWebController()
+                vc.urlString = url
+                vc.title = title
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        } else if (action == "payAction") {
+            let jsStr = "payResult()"
+            self.webView.evaluateJavaScript(jsStr) { (result, error) in
+                print("result: \(String(describing: result)) error:\(String(describing: error))")
+            }
         }
     }
     
@@ -145,6 +154,11 @@ extension BaseWKWebController: WKNavigationDelegate, WKUIDelegate, WKScriptMessa
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         print("didFailProvisionalNavigation")
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        print("runJavaScriptAlertPanelWithMessage : \(message)")
+        completionHandler()
     }
     
 }

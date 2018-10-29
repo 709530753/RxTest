@@ -10,6 +10,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 import MBProgressHUD
+import SLMPatternLock
+import SLMAuthKit
 
 class ViewController: UIViewController {
 
@@ -21,7 +23,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        SLMPatternLockManager().startPattern()
+
         //注释
 //         MBProgressHUD.show(message: "", view: self.view)
         //绑定数据
@@ -31,15 +34,16 @@ class ViewController: UIViewController {
         }.disposed(by: disPosBag)
         
         mainTable.rx.modelSelected(Title.self).subscribe(onNext: { titleModel in
-            let VC = titleModel.pushVC.getVC()
-            VC.title = titleModel.title
-            self.navigationController?.pushViewController(VC, animated: true)
+           
+//            let VC = titleModel.pushVC.getVC()
+//            VC.title = titleModel.title
+//            self.navigationController?.pushViewController(VC, animated: true)
         }).disposed(by: disPosBag)
-     
+
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        MBProgressHUD.hideHUDForView(view: self.view)
+//        MBProgressHUD.hideHUDForView(view: self.view)
 
     }
     
