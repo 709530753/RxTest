@@ -22,8 +22,13 @@ class RxTestTests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+        var aaa =  "   "
+        
+        var str2 = String()
+        
+        print("str 2 : \(aaa)------\(aaa.isEmpty)")
+        
     }
     
     func testPerformanceExample() {

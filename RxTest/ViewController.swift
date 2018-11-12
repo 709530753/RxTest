@@ -23,8 +23,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SLMPatternLockManager().startPattern()
-
+//        SLMPatternLockManager().startPattern()
+        //哈哈哈哈哈哈哈哈啊哈哈哈哈哈哈哈哈哈
         //注释
 //         MBProgressHUD.show(message: "", view: self.view)
         //绑定数据
@@ -33,13 +33,22 @@ class ViewController: UIViewController {
             cell.detailTextLabel?.text = titleModel.subTitle
         }.disposed(by: disPosBag)
         
-        mainTable.rx.modelSelected(Title.self).subscribe(onNext: { titleModel in
-           
-//            let VC = titleModel.pushVC.getVC()
-//            VC.title = titleModel.title
-//            self.navigationController?.pushViewController(VC, animated: true)
+        mainTable.rx.modelSelected(Title.self).subscribe(onNext: { titleModel in           
+            let VC = titleModel.pushVC.getVC()
+            VC.title = titleModel.title
+            self.navigationController?.pushViewController(VC, animated: true)
         }).disposed(by: disPosBag)
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

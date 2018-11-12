@@ -7,13 +7,23 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class ObservableController: UIViewController {
+    
+    var subject:PublishSubject<String>!
 
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
 
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+            
+    }
+    
 }
