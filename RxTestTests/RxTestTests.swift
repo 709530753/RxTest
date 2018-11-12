@@ -23,6 +23,7 @@ class RxTestTests: XCTestCase {
     
     func testExample() {
 
+        //哈哈哈
         var aaa =  "   "
         
         var str2 = String()
