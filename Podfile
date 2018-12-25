@@ -25,6 +25,7 @@ target 'RxTest' do
     pod 'SLMPatternLock', '~>0.1.5'
 #    , path:'/Users/myxc/Documents/SLMPatternLock'
     pod 'SLMAuthKit', '~>0.1.1'
+
 #    , :path => '/Users/myxc/Documents/SLMAuthKit'
 #    , :path => '/Users/myxc/Documents/XCMenuViewKit'
 #    pod 'XCMenuViewKit', :podspec => '/Users/myxc/Documents/XCMenuViewKit/XCMenuViewKit.podspec'

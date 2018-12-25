@@ -24,9 +24,9 @@ class RxTestTests: XCTestCase {
     func testExample() {
 
         //哈哈哈
-        var aaa =  "   "
+        let aaa =  "   "
         
-        var str2 = String()
+        _ = String()
         
         print("str 2 : \(aaa)------\(aaa.isEmpty)")
         

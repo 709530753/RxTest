@@ -12,6 +12,7 @@ import RxCocoa
 import MBProgressHUD
 import SLMPatternLock
 import SLMAuthKit
+import RxAlamofire
 
 class ViewController: UIViewController {
 
@@ -39,6 +40,12 @@ class ViewController: UIViewController {
             self.navigationController?.pushViewController(VC, animated: true)
         }).disposed(by: disPosBag)
 
+        request(.get, "http://localhost:9528/Demo/message/message.json").data().subscribe(onNext: { (data) in
+            print(data)
+            let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as! [String : Any]
+            print("json :\(String(describing: json))")
+        }).disposed(by: disPosBag)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

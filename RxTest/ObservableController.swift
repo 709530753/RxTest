@@ -12,7 +12,7 @@ import RxSwift
 
 class ObservableController: UIViewController {
     
-    var subject:PublishSubject<String>!
+    var subject:PublishSubject<String>! = PublishSubject<String>()
 
     let disposeBag = DisposeBag()
     
@@ -23,7 +23,11 @@ class ObservableController: UIViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-            
+        
+        if (subject != nil) {
+            subject.onNext("😁😁😁😁😁😁")
+        }
+        
     }
     
 }
