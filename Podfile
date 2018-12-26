@@ -14,7 +14,6 @@ target 'RxTest' do
     pod 'RxDataSources', '~> 3.0'
     pod 'Moya'
     pod 'Moya/RxSwift'
-    pod 'Alamofire', '~> 4.7'
     pod 'Result'
     pod 'ObjectMapper', '~> 3.3'
     pod 'Moya-ObjectMapper'
